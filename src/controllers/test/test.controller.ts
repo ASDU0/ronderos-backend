@@ -1,4 +1,4 @@
-import {Controller, Post} from '@nestjs/common';
+import {Controller, Get, Post} from '@nestjs/common';
 import {TestUseCase} from "../../use-cases/test/test.use-case";
 
 @Controller('test')
@@ -13,5 +13,9 @@ export class TestController {
             name: "test",
             age: 1,
         });
+    }
+    @Get()
+    async getTests() {
+        return await this.testUseCase.getTests();
     }
 }

@@ -1,5 +1,4 @@
 import {Injectable} from "@nestjs/common";
-// import {Complaint} from "../../frameworks/data-services/mongo/model/complaint.model";
 import {IDataServices, Complaint} from "../../core";
 
 @Injectable()
