@@ -4,20 +4,22 @@ import {ConfigService} from "@nestjs/config";
 import {Test, TestSchema} from "./model";
 import {IDataServices} from "../../../core";
 import {MongoDataServices} from "./mongo-data-services.service";
+import {Complaint, ComplaintSchema} from "./model/complaint.model";
 
 
 @Module({
     imports: [
         MongooseModule.forFeature([
-            {name: Test.name, schema: TestSchema}
+            {name: Test.name, schema: TestSchema},
+            {name: Complaint.name, schema: ComplaintSchema}
         ]),
-      MongooseModule.forRootAsync({
-          imports: [],
-          inject:[ConfigService],
+        MongooseModule.forRootAsync({
+            imports: [],
+            inject: [ConfigService],
             useFactory: (configService: ConfigService) => ({
                 uri: configService.get('mongoConnectionString'),
             })
-      }),
+        }),
     ],
     providers: [{
         provide: IDataServices,
