@@ -1,5 +1,8 @@
 import {Prop, Schema, SchemaFactory} from "@nestjs/mongoose";
+import mongoose, {Document} from "mongoose";
+import {User, UserSchema} from "./user.model";
 
+export type ComplaintDocument = Complaint & Document;
 @Schema()
 export class Complaint {
     @Prop()
@@ -20,8 +23,8 @@ export class Complaint {
     longitude: number;
     @Prop()
     registrationDate: Date;
-    // @Prop()
-    // user:UserSchema
+    @Prop({type:mongoose.Schema.Types.ObjectId,ref:'User'})
+    user:User;
 }
 
 export const ComplaintSchema = SchemaFactory.createForClass(Complaint);
