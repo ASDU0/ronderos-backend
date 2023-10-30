@@ -1,18 +1,30 @@
 import {Module} from "@nestjs/common";
 import {MongooseModule} from "@nestjs/mongoose";
 import {ConfigService} from "@nestjs/config";
-import {Test, TestSchema, Complaint, ComplaintSchema, User, UserSchema} from "./model";
+import {
+    Test,
+    TestSchema,
+    Complaint,
+    ComplaintSchema,
+    User,
+    UserSchema,
+    Objects,
+    ObjectsSchema,
+    TypeCrime,
+    TypeCrimeSchema
+} from "./model";
 import {IDataServices} from "../../../core";
 import {MongoDataServices} from "./mongo-data-services.service";
-
 
 
 @Module({
     imports: [
         MongooseModule.forFeature([
-            {name: Test.name, schema: TestSchema},
             {name: Complaint.name, schema: ComplaintSchema},
-            {name: User.name, schema: UserSchema}
+            {name: Test.name, schema: TestSchema},
+            {name: TypeCrime.name, schema: TypeCrimeSchema},
+            {name: User.name, schema: UserSchema},
+            {name: Objects.name, schema: ObjectsSchema}
         ]),
         MongooseModule.forRootAsync({
             imports: [],
