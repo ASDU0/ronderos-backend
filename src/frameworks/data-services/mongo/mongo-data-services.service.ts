@@ -22,7 +22,7 @@ export class MongoDataServices implements IDataServices, OnApplicationBootstrap 
     complaints: MongoGenericRepository<Complaint>;
     users: MongoGenericRepository<User>;
     typeCrimes: MongoGenericRepository<TypeCrime>;
-    object: MongoGenericRepository<Objects>
+    objects: MongoGenericRepository<Objects>
 
     constructor(
         @InjectModel(Test.name)
@@ -43,7 +43,7 @@ export class MongoDataServices implements IDataServices, OnApplicationBootstrap 
         this.complaints = new MongoGenericRepository<Complaint>(this.ComplaintRepository);
         this.users = new MongoGenericRepository<User>(this.UserRepository);
         this.typeCrimes = new MongoGenericRepository<TypeCrime>(this.TypeCrimeRepository,);
-        this.object = new MongoGenericRepository<Objects>(this.ObjectRepository);
+        this.objects = new MongoGenericRepository<Objects>(this.ObjectRepository);
     }
 
 }
