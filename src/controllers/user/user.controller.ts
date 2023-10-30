@@ -24,7 +24,7 @@ export class UserController {
     @Post()
     async createUser(@Body() user: UserDto) {
         try {
-            await this.userUseCase.createUser(user)
+           return await this.userUseCase.createUser(user)
         } catch (error) {
             throw new HttpException({
                 status: 500,

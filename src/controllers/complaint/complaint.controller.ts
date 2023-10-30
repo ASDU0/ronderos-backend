@@ -8,11 +8,25 @@ export class ComplaintController {
     constructor(private complaintUseCase: ComplaintUseCase) {
     }
 
+    // @Get()
+    // async getComplaints() {
+    //     try {
+    //         console.log("getComplaints")
+    //         return await this.complaintUseCase.getComplaints();
+    //     } catch (error) {
+    //         throw new HttpException({
+    //             status: 500,
+    //             error: error.message,
+    //         }, 500, {
+    //             cause: error,
+    //         })
+    //     }
+    // }
+
     @Get()
     async getComplaints() {
         try {
-            console.log("getComplaints")
-            return await this.complaintUseCase.getComplaints();
+            return await this.complaintUseCase.getComplaintsUsers();
         } catch (error) {
             throw new HttpException({
                 status: 500,

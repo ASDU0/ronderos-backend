@@ -24,7 +24,7 @@ export class ObjectController {
     @Post()
     async createObject(@Body() object: ObjectDto) {
         try {
-            await this.objectUseCase.createObject(object)
+            return await this.objectUseCase.createObject(object)
         } catch (error) {
             throw new HttpException({
                 status: 500,
@@ -38,7 +38,7 @@ export class ObjectController {
     @Put(':id')
     async updateObject(@Param('id') objectId: string, @Body() object: ObjectDto) {
         try {
-            await this.objectUseCase.updateObject(objectId, object)
+            return await this.objectUseCase.updateObject(objectId, object)
         } catch (error) {
             throw new HttpException({
                 status: 500,

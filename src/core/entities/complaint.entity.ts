@@ -1,4 +1,7 @@
 import {Prop} from "@nestjs/mongoose";
+import {User} from "./user.entity";
+import {TypeCrime} from "./type-crime.entity";
+import {Objects} from "./object.entity";
 
 export class Complaint {
     title: string;
@@ -10,5 +13,7 @@ export class Complaint {
     latitude: number;
     longitude: number;
     registrationDate: Date;
-    // user:UserSchema
+    user:User;
+    typeCrime:TypeCrime;
+    object: Objects[];
 }
