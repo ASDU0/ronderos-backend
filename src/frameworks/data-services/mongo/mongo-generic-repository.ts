@@ -22,7 +22,7 @@ export class MongoGenericRepository<T> implements IGenericRepository<T>{
     }
 
     getAllUsers(): Promise<T[]> {
-        return this._repository.find().populate("object").exec();
+        return this._repository.find().populate(["object","typeCrime","user"]).exec();
     }
 
     getById(id: any): Promise<T> {
