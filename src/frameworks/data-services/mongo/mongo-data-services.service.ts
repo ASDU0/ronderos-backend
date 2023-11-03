@@ -40,7 +40,7 @@ export class MongoDataServices implements IDataServices, OnApplicationBootstrap 
 
     onApplicationBootstrap(): any {
         this.tests = new MongoGenericRepository<Test>(this.TestRepository);
-        this.complaints = new MongoGenericRepository<Complaint>(this.ComplaintRepository);
+        this.complaints = new MongoGenericRepository<Complaint>(this.ComplaintRepository,['user','object','typeCrime']);
         this.users = new MongoGenericRepository<User>(this.UserRepository);
         this.typeCrimes = new MongoGenericRepository<TypeCrime>(this.TypeCrimeRepository,);
         this.objects = new MongoGenericRepository<Objects>(this.ObjectRepository);
