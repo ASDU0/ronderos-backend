@@ -1,6 +1,6 @@
 import {Body, Controller, Delete, Get, HttpException, Param, Post, Put} from "@nestjs/common";
 import {TypeCrimeUseCase} from "../../use-cases/type-crime/type-crime.use-case";
-import { TypeCrimeDto } from "../../core/dtos/type-crime.dto";
+import { TypeCrimeDto } from "../../core";
 
 
 @Controller('api/type-crime')

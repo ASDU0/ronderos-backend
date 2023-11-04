@@ -21,6 +21,10 @@ export class MongoGenericRepository<T> implements IGenericRepository<T>{
         return this._repository.find().populate(this._populateOnFind).exec();
     }
 
+    getAllUsers(): Promise<T[]> {
+        return this._repository.find().populate(["object","typeCrime","user"]).exec();
+    }
+
     getById(id: any): Promise<T> {
         return this._repository.findById(id).populate.apply(this._populateOnFind).exec();
     }

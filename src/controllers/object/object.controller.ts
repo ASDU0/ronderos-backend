@@ -1,18 +1,16 @@
 import {Body, Controller, Delete, Get, HttpException, Param, Post, Put} from "@nestjs/common";
-import {ComplaintUseCase} from "../../use-cases/complaint/complaint.use-case";
-import {ComplaintDto} from "../../core";
+import {ObjectUseCase} from "../../use-cases/object/object.use-case";
+import {ObjectDto} from "../../core";
 
-
-@Controller('api/complaint')
-export class ComplaintController {
-    constructor(private complaintUseCase: ComplaintUseCase) {
+@Controller('api/object')
+export class ObjectController {
+    constructor(private objectUseCase: ObjectUseCase) {
     }
 
     @Get()
-    async getComplaints() {
+    async getObjects() {
         try {
-            console.log("getComplaints")
-            return await this.complaintUseCase.getComplaints();
+            return await this.objectUseCase.getObjects()
         } catch (error) {
             throw new HttpException({
                 status: 500,
@@ -24,10 +22,9 @@ export class ComplaintController {
     }
 
     @Post()
-    async createComplaint(@Body() complaint: ComplaintDto) {
+    async createObject(@Body() object: ObjectDto) {
         try {
-            console.log(complaint)
-            return await this.complaintUseCase.createComplaint(complaint);
+            return await this.objectUseCase.createObject(object)
         } catch (error) {
             throw new HttpException({
                 status: 500,
@@ -39,10 +36,9 @@ export class ComplaintController {
     }
 
     @Put(':id')
-    async updateComplaint(@Param('id') complaintId: string, @Body() complaint: ComplaintDto) {
+    async updateObject(@Param('id') objectId: string, @Body() object: ObjectDto) {
         try {
-            console.log("updateComplaint")
-            return await this.complaintUseCase.updateComplaint(complaintId, complaint);
+            return await this.objectUseCase.updateObject(objectId, object)
         } catch (error) {
             throw new HttpException({
                 status: 500,
@@ -54,9 +50,9 @@ export class ComplaintController {
     }
 
     @Delete(':id')
-    async deleteComplaint(@Param('id') complaintId: string) {
+    async deleteObject(@Param('id') objectId: string) {
         try {
-            return await this.complaintUseCase.deleteComplaint(complaintId);
+            return await this.objectUseCase.deleteObject(objectId)
         } catch (error) {
             throw new HttpException({
                 status: 500,

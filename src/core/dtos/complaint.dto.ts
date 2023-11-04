@@ -1,4 +1,5 @@
-import {IsBoolean, IsDate, IsNumber, IsString} from "class-validator";
+import {IsArray, IsBoolean, IsDate, IsNumber, IsString} from "class-validator";
+import {Objects, TypeCrime, User} from "../entities";
 
 export class ComplaintDto{
     @IsString()
@@ -19,4 +20,8 @@ export class ComplaintDto{
     longitude:number;
     @IsDate()
     registrationDate:Date;
+    user:User;
+    typeCrime:TypeCrime;
+    // @IsArray()
+    object:Objects[];
 }
