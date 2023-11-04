@@ -1,18 +1,18 @@
 import {Body, Controller, Delete, Get, HttpException, Param, Post, Put} from "@nestjs/common";
-import {ComplaintUseCase} from "../../use-cases/complaint/complaint.use-case";
-import {ComplaintDto} from "../../core";
+import {TypeCrimeUseCase} from "../../use-cases/type-crime/type-crime.use-case";
+import { TypeCrimeDto } from "../../core";
 
 
-@Controller('api/complaint')
-export class ComplaintController {
-    constructor(private complaintUseCase: ComplaintUseCase) {
+@Controller('api/type-crime')
+export class TypeCrimeController {
+    constructor(private typeCrimeUseCase: TypeCrimeUseCase) {
     }
 
     @Get()
-    async getComplaints() {
+    async getTypeCrimes() {
         try {
-            console.log("getComplaints")
-            return await this.complaintUseCase.getComplaints();
+            console.log("getTypeCrime")
+            return await this.typeCrimeUseCase.getTypeCrimes();
         } catch (error) {
             throw new HttpException({
                 status: 500,
@@ -24,10 +24,10 @@ export class ComplaintController {
     }
 
     @Post()
-    async createComplaint(@Body() complaint: ComplaintDto) {
+    async createTypeCrime(@Body() typeCrime: TypeCrimeDto) {
         try {
-            console.log(complaint)
-            return await this.complaintUseCase.createComplaint(complaint);
+            console.log(typeCrime)
+            return await this.typeCrimeUseCase.createTypeCrime(typeCrime);
         } catch (error) {
             throw new HttpException({
                 status: 500,
@@ -39,10 +39,10 @@ export class ComplaintController {
     }
 
     @Put(':id')
-    async updateComplaint(@Param('id') complaintId: string, @Body() complaint: ComplaintDto) {
+    async updateTypeCrime(@Param('id') typeCrimeId: string, @Body() typeCrime: TypeCrimeDto) {
         try {
-            console.log("updateComplaint")
-            return await this.complaintUseCase.updateComplaint(complaintId, complaint);
+            console.log("updateTypeCrime")
+            return await this.typeCrimeUseCase.updateTypeCrime(typeCrimeId, typeCrime);
         } catch (error) {
             throw new HttpException({
                 status: 500,
@@ -54,9 +54,9 @@ export class ComplaintController {
     }
 
     @Delete(':id')
-    async deleteComplaint(@Param('id') complaintId: string) {
+    async deleteTypeCrime(@Param('id') typeCrimeId: string) {
         try {
-            return await this.complaintUseCase.deleteComplaint(complaintId);
+            return await this.typeCrimeUseCase.deleteTypeCrime(typeCrimeId);
         } catch (error) {
             throw new HttpException({
                 status: 500,

@@ -12,6 +12,10 @@ export class ComplaintUseCase {
         return this.dataServices.complaints.getAll();
     }
 
+    getComplaintsUsers(): Promise<Complaint[]> {
+        return this.dataServices.complaints.getAllUsers();
+    }
+
     createComplaint(complaint: Complaint): Promise<Complaint> {
         return this.dataServices.complaints.create(complaint);
     }
