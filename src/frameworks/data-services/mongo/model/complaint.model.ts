@@ -1,6 +1,6 @@
 import {Prop, Schema, SchemaFactory} from "@nestjs/mongoose";
 import mongoose, {Document} from "mongoose";
-import {User, TypeCrime, Objects} from "./index";
+import {User, TypeCrime, Objects, Neighborhood} from "./index";
 
 export type ComplaintDocument = Complaint & Document;
 @Schema()
@@ -23,6 +23,8 @@ export class Complaint {
     longitude: number;
     @Prop()
     registrationDate: Date;
+    @Prop({type:mongoose.Schema.Types.ObjectId,ref:'Neighborhood'})
+    neighborhood: Neighborhood;
     @Prop({type:mongoose.Schema.Types.ObjectId,ref:'User'})
     user:User;
     @Prop({type:mongoose.Schema.Types.ObjectId,ref:'TypeCrime'})
