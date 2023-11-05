@@ -11,7 +11,7 @@ import {
     Objects,
     ObjectsSchema,
     TypeCrime,
-    TypeCrimeSchema, City, CitySchema
+    TypeCrimeSchema, City, CitySchema, Neighborhood, NeighborhoodSchema
 } from "./model";
 import {IDataServices} from "../../../core";
 import {MongoDataServices} from "./mongo-data-services.service";
@@ -27,6 +27,7 @@ import {MongoDataServices} from "./mongo-data-services.service";
             {name: User.name, schema: UserSchema},
             {name: Objects.name, schema: ObjectsSchema},
             {name: City.name,schema:CitySchema},
+            {name: Neighborhood.name,schema:NeighborhoodSchema}
         ]),
         MongooseModule.forRootAsync({
             imports: [],

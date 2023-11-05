@@ -9,7 +9,7 @@ import {
     User,
     UserDocument,
     Objects,
-    typeCrimeDocument, ObjectsDocument, TypeCrime, City, CityDocument
+    typeCrimeDocument, ObjectsDocument, TypeCrime, City, CityDocument, Neighborhood, NeighborhoodDocument
 } from "./model";
 import {InjectModel} from "@nestjs/mongoose";
 
@@ -24,6 +24,7 @@ export class MongoDataServices implements IDataServices, OnApplicationBootstrap 
     typeCrimes: MongoGenericRepository<TypeCrime>;
     objects: MongoGenericRepository<Objects>
     cities: MongoGenericRepository<City>
+    neighborhoods: MongoGenericRepository<Neighborhood>
 
 
     constructor(
@@ -38,7 +39,9 @@ export class MongoDataServices implements IDataServices, OnApplicationBootstrap 
         @InjectModel(Objects.name)
         private ObjectRepository: Model<ObjectsDocument>,
         @InjectModel(City.name)
-        private CityRepository: Model<CityDocument>
+        private CityRepository: Model<CityDocument>,
+        @InjectModel(Neighborhood.name)
+        private NeighborhoodRepository: Model<NeighborhoodDocument>
     ) {
     }
 
@@ -52,6 +55,9 @@ export class MongoDataServices implements IDataServices, OnApplicationBootstrap 
         this.typeCrimes = new MongoGenericRepository<TypeCrime>(this.TypeCrimeRepository,);
         this.objects = new MongoGenericRepository<Objects>(this.ObjectRepository);
         this.cities = new MongoGenericRepository<City>(this.CityRepository)
+        this.neighborhoods = new MongoGenericRepository<Neighborhood>(
+            this.NeighborhoodRepository,
+            ["city"])
     }
 
 }

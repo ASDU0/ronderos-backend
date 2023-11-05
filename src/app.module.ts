@@ -7,7 +7,7 @@ import {config} from "./config";
 import {
     TestController,
     ComplaintController,
-    TypeCrimeController, UserController, ObjectController, CityController
+    TypeCrimeController, UserController, ObjectController, CityController, NeighborhoodController
 } from "./controllers";
 
 import {DataServicesModule} from "./services/data-services/data-services.module";
@@ -16,10 +16,11 @@ import {DataServicesModule} from "./services/data-services/data-services.module"
 import {TestUseCasesModule} from "./use-cases/test/test-use-cases.module";
 
 import {ComplaintUseCasesModule} from "./use-cases/complaint/complaint-use-cases.module";
-import {TypeCrimeUseCasesModule} from './use-cases/type-crime/type-crime.use-cases.module';
-import {UserUseCasesModule} from "./use-cases/user/user.use-cases.module";
+import {TypeCrimeUseCasesModule} from './use-cases/type-crime/type-crime-use-cases.module';
+import {UserUseCasesModule} from "./use-cases/user/user-use-cases.module";
 import {ObjectUseCasesModule} from "./use-cases/object/object.use-cases.module";
-import {CityUseCasesModule} from "./use-cases/city/city.use-cases.module";
+import {CityUseCasesModule} from "./use-cases/city/city-use-cases.module";
+import {NeighborhoodUseCasesModule} from "./use-cases/neighborhood/neighborhood-use-cases.module";
 
 @Module({
     imports: [
@@ -33,7 +34,8 @@ import {CityUseCasesModule} from "./use-cases/city/city.use-cases.module";
         ComplaintUseCasesModule,
         TypeCrimeUseCasesModule,
         ObjectUseCasesModule,
-        CityUseCasesModule
+        CityUseCasesModule,
+        NeighborhoodUseCasesModule,
     ],
     controllers: [
         AppController,
@@ -42,7 +44,8 @@ import {CityUseCasesModule} from "./use-cases/city/city.use-cases.module";
         TypeCrimeController,
         UserController,
         ObjectController,
-        CityController
+        CityController,
+        NeighborhoodController
     ],
     providers: [AppService],
 })
