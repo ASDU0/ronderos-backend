@@ -9,7 +9,7 @@ import {
     User,
     UserDocument,
     Objects,
-    typeCrimeDocument, ObjectsDocument, TypeCrime
+    typeCrimeDocument, ObjectsDocument, TypeCrime, City, CityDocument, Neighborhood, NeighborhoodDocument
 } from "./model";
 import {InjectModel} from "@nestjs/mongoose";
 
@@ -23,6 +23,9 @@ export class MongoDataServices implements IDataServices, OnApplicationBootstrap 
     users: MongoGenericRepository<User>;
     typeCrimes: MongoGenericRepository<TypeCrime>;
     objects: MongoGenericRepository<Objects>
+    cities: MongoGenericRepository<City>
+    neighborhoods: MongoGenericRepository<Neighborhood>
+
 
     constructor(
         @InjectModel(Test.name)
@@ -34,16 +37,27 @@ export class MongoDataServices implements IDataServices, OnApplicationBootstrap 
         @InjectModel(TypeCrime.name)
         private TypeCrimeRepository: Model<typeCrimeDocument>,
         @InjectModel(Objects.name)
-        private ObjectRepository: Model<ObjectsDocument>
+        private ObjectRepository: Model<ObjectsDocument>,
+        @InjectModel(City.name)
+        private CityRepository: Model<CityDocument>,
+        @InjectModel(Neighborhood.name)
+        private NeighborhoodRepository: Model<NeighborhoodDocument>
     ) {
     }
 
     onApplicationBootstrap(): any {
         this.tests = new MongoGenericRepository<Test>(this.TestRepository);
-        this.complaints = new MongoGenericRepository<Complaint>(this.ComplaintRepository,['user','object','typeCrime']);
+        this.complaints = new MongoGenericRepository<Complaint>(
+            this.ComplaintRepository,
+            ['user', 'object', 'typeCrime']
+        );
         this.users = new MongoGenericRepository<User>(this.UserRepository);
         this.typeCrimes = new MongoGenericRepository<TypeCrime>(this.TypeCrimeRepository,);
         this.objects = new MongoGenericRepository<Objects>(this.ObjectRepository);
+        this.cities = new MongoGenericRepository<City>(this.CityRepository)
+        this.neighborhoods = new MongoGenericRepository<Neighborhood>(
+            this.NeighborhoodRepository,
+            ["city"])
     }
 
 }
