@@ -1,5 +1,5 @@
 import {IGenericRepository} from "./generic-repository.abstract";
-import {Complaint, Objects, Test, TypeCrime, User} from "../entities";
+import {City, Complaint, Objects, Test, TypeCrime, User} from "../entities";
 
 
 
@@ -9,4 +9,5 @@ export abstract class IDataServices{
     abstract typeCrimes:IGenericRepository<TypeCrime>
     abstract users:IGenericRepository<User>
     abstract objects:IGenericRepository<Objects>
+    abstract cities:IGenericRepository<City>
 }
