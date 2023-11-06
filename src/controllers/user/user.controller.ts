@@ -34,4 +34,18 @@ export class UserController {
             })
         }
     }
+
+    @Post('login')
+    async login(@Body() user: UserDto) {
+        try {
+           return await this.userUseCase.login(user.email,user.password)
+        } catch (error) {
+            throw new HttpException({
+                status: 500,
+                error: error.message,
+            }, 500, {
+                cause: error,
+            })
+        }
+    }
 }
