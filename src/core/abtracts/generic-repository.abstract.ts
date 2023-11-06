@@ -8,4 +8,5 @@ export abstract class IGenericRepository<T> {
     abstract getAll(): Promise<T[]>;
     abstract getAllUsers():Promise<T[]>;
     abstract getById(id: string): Promise<T>;
+    abstract getFindOne(query:any):Promise<T>;
 }
