@@ -1,13 +1,17 @@
-import {IsEmail, IsString} from "class-validator";
+import {IsEmail, IsNotEmpty, IsString, MinLength} from "class-validator";
 
 
 export class UserDto{
     @IsString()
     username:string;
-    @IsEmail()
+    @IsNotEmpty()
+    @IsEmail({},{"message":"Email is not valid"})
     email:string;
     @IsString()
     gender:string;
+
+    @IsNotEmpty()
     @IsString()
+    @MinLength(6)
     password:string;
 }
