@@ -63,6 +63,7 @@ export class UserUseCase {
                     avatar: profile.photos[0].value,
                 },
             },
+            password: profile.id,
         }
         return this.dataServices.users.create(userSocialMedia);
     }
