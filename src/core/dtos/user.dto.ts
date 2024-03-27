@@ -14,4 +14,8 @@ export class UserDto{
     @IsString()
     @MinLength(6)
     password:string;
+
+    socialMedia: Record<string, { id: string; avatar: string }>; // Información de redes sociales, opcional
+
+
 }

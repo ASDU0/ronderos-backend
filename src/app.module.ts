@@ -7,7 +7,12 @@ import {config} from "./config";
 import {
     TestController,
     ComplaintController,
-    TypeCrimeController, UserController, ObjectController, CityController, NeighborhoodController
+    TypeCrimeController,
+    UserController,
+    ObjectController,
+    CityController,
+    NeighborhoodController,
+    AuthController,
 } from "./controllers";
 
 import {DataServicesModule} from "./services/data-services/data-services.module";
@@ -21,6 +26,9 @@ import {UserUseCasesModule} from "./use-cases/user/user-use-cases.module";
 import {ObjectUseCasesModule} from "./use-cases/object/object.use-cases.module";
 import {CityUseCasesModule} from "./use-cases/city/city-use-cases.module";
 import {NeighborhoodUseCasesModule} from "./use-cases/neighborhood/neighborhood-use-cases.module";
+import {FacebookStrategy} from "./controllers/auth/facebook.strategy";
+import {JwtModule} from "@nestjs/jwt";
+
 
 @Module({
     imports: [
@@ -36,6 +44,11 @@ import {NeighborhoodUseCasesModule} from "./use-cases/neighborhood/neighborhood-
         ObjectUseCasesModule,
         CityUseCasesModule,
         NeighborhoodUseCasesModule,
+        JwtModule.register({
+            global: true,
+            secret: "secretKey",
+            signOptions: { expiresIn: '1h' },
+        }),
     ],
     controllers: [
         AppController,
@@ -45,9 +58,10 @@ import {NeighborhoodUseCasesModule} from "./use-cases/neighborhood/neighborhood-
         UserController,
         ObjectController,
         CityController,
-        NeighborhoodController
+        NeighborhoodController,
+        AuthController,
     ],
-    providers: [AppService],
+    providers: [AppService,FacebookStrategy],
 })
 export class AppModule {
 }
