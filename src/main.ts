@@ -6,6 +6,6 @@ async function bootstrap() {
   console.log("DATA"+DATA_BASE_CONFIGURATION.mongoConnectionString);
   const app = await NestFactory.create(AppModule);
   app.enableCors();
-  await app.listen(3000);
+  await app.listen(3001);
 }
 bootstrap();

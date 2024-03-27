@@ -18,6 +18,15 @@ export class User {
 
     @Prop({ required: true })
     password: string;
+    @Prop({
+        type:Map,
+        of:{
+            id: String,
+            avatar: String
+        },
+        default: {}
+    })
+    socialMedia: Record<string,{id:string;avatar:string}>;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);
